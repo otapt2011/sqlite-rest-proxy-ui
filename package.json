@@ -1,0 +1,17 @@
+{
+  "name": "sqlite-rest-proxy-ui",
+  "version": "1.0.0",
+  "description": "Frontend UI for SQLite REST API proxy",
+  "scripts": {
+    "dev": "npx http-server -p 8000",
+    "build": "echo 'Static files only'"
+  },
+  "keywords": [
+    "sqlite",
+    "rest-api",
+    "frontend",
+    "ui"
+  ],
+  "author": "otapt2011",
+  "license": "MIT"
+}

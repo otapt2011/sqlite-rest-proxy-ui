@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLite REST API Proxy UI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>📊 SQLite REST API Proxy</h1>
+                <p>Manage your SQLite database with a simple web interface</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Table Selection -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>Select Table</h2>
+                </div>
+                <div class="table-selector">
+                    <input 
+                        type="text" 
+                        id="tableName" 
+                        placeholder="Enter table name (e.g., users, posts)"
+                        class="input-field"
+                    >
+                    <button id="loadBtn" class="btn btn-primary">Load Records</button>
+                </div>
+                <p class="help-text">Enter the name of the SQLite table you want to manage</p>
+            </section>
+
+            <!-- API Status -->
+            <section class="section">
+                <div class="api-status">
+                    <span id="apiStatus" class="status-badge">Checking...</span>
+                    <span id="statusText" class="status-text"></span>
+                </div>
+            </section>
+
+            <!-- Records Display -->
+            <section class="section" id="recordsSection" style="display: none;">
+                <div class="section-header">
+                    <h2>Records</h2>
+                    <span class="record-count" id="recordCount"></span>
+                </div>
+
+                <!-- Records Table -->
+                <div class="records-table-wrapper">
+                    <table class="records-table" id="recordsTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Data</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recordsBody">
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination" id="paginationDiv" style="display: none;">
+                    <button id="prevBtn" class="btn btn-secondary">← Previous</button>
+                    <span id="pageInfo" class="page-info"></span>
+                    <button id="nextBtn" class="btn btn-secondary">Next →</button>
+                </div>
+            </section>
+
+            <!-- Create/Edit Form -->
+            <section class="section" id="formSection" style="display: none;">
+                <div class="section-header">
+                    <h2 id="formTitle">Add New Record</h2>
+                </div>
+                <form id="recordForm" class="form">
+                    <div id="formFields" class="form-fields"></div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-success" id="submitBtn">Add Record</button>
+                        <button type="button" class="btn btn-secondary" id="cancelBtn" style="display: none;">Cancel</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for Record Details -->
+    <div id="recordModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Record Details</h2>
+                <button class="modal-close" id="modalClose">×</button>
+            </div>
+            <div id="modalBody" class="modal-body"></div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="editBtn">Edit</button>
+                <button class="btn btn-danger" id="deleteBtn">Delete</button>
+                <button class="btn btn-secondary" id="closeModalBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast" class="toast" style="display: none;"></div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
