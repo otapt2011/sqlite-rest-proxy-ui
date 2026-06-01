@@ -1,5 +1,5 @@
 // API Configuration
-const API_URL = 'http://localhost:3000/api';
+const API_URL = 'https://sqlite-rest-proxy.vercel.app/api';
 
 // State Management
 const state = {
